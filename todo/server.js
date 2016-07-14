@@ -6,8 +6,14 @@ var options = {
 };
 var server = restify.createServer(options);
 
-/*server.on("after", function() {
-    console.log("after", arguments);
+server.use(restify.bodyParser({
+    maxBodySize: 10 * 1024
+}));
+
+/*server.use(function(req, res, next) {
+    console.log("middleware is here", req.body);
+    //next(new Error("Fuck off dude"));
+    next();
 });*/
 
 server.on("after", restify.auditLogger({
