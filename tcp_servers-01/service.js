@@ -11,7 +11,11 @@ module.exports = function() {
     parse(),
     through.obj(function(req, enc, cb) {
       var response = {};
-      if (req.str) {
+      if (req.error) {
+        response.ok = false;
+        response.error = req.error;
+      }
+      else if (req.str) {
         response.upperCased = req.str.toUpperCase();
         response.ok = true;
         response.original = req.str;
@@ -19,6 +23,6 @@ module.exports = function() {
       this.push(response);
       cb();
     }),
-    encode(),
+    encode()
   );
 };

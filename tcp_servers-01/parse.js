@@ -1,8 +1,15 @@
-var through = require("./through2");
+var through = require("through2");
 
-module.export = function() {
+module.exports = function() {
   return through.obj(function(chunk, enc, cb) {
-    this.push(JSON.parse(chunk));
+    var ret;
+    try {
+      ret = JSON.parse(chunk);
+    } catch (err) {
+      ret = {error: err.message};
+      //return cb(err);
+    }
+    this.push(ret);
     cb();
   });
 };

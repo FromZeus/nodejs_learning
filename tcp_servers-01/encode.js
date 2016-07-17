@@ -1,6 +1,6 @@
-var through = require("./through2");
+var through = require("through2");
 
-module.export = function() {
+module.exports = function() {
   return through.obj(function(obj, enc, cb) {
     this.push(JSON.stringify(obj) + "\n");
     cb();

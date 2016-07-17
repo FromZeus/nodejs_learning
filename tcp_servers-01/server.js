@@ -12,7 +12,13 @@ server.on("connection", function(conn) {
         console.log("Connection closed");
     });
 
-    conn.pipe(Service()).pipe(conn);
+    service = Service();
+    service.on("error", function(err) {
+      console.error(err);
+      conn.end();
+    });
+
+    conn.pipe(service).pipe(conn);
 
     /*conn.on("data", function(buf) {
         conn.write(buf.toUpperCase());
