@@ -1,5 +1,5 @@
-var through = require("through2");
 var net = require("net");
+var Service = require("./service");
 
 var server = net.createServer();
 
@@ -12,12 +12,7 @@ server.on("connection", function(conn) {
         console.log("Connection closed");
     });
 
-    var upperCasing = through.obj(function(str, enc, cb) {
-        this.push(str.toUpperCase());
-        cb();
-    });
-
-    conn.pipe(upperCasing).pipe(conn);
+    conn.pipe(Service()).pipe(conn);
 
     /*conn.on("data", function(buf) {
         conn.write(buf.toUpperCase());

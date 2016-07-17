@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "split2": "^2.1.0",
+    "stream-combiner2": "^1.1.1",
     "through2": "^2.0.1"
   }
 }
