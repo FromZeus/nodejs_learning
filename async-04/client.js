@@ -1,9 +1,13 @@
-var mapAsyncSeries = require("./map_async_series");
+var mapAsyncLimit = require("./map_async_limit");
 
-var messages = ["message 1", "message 2", "message 3"];
+var messages = [
+  "message 1", "message 2", "message 3",
+  "message 4", "message 5", "message 6",
+  "message 7", "message 8", "message 9"
+];
 var index = 0;
 
-mapAsyncSeries(messages, send, done);
+mapAsyncLimit(4, messages, send, done);
 
 function done(err, results) {
   if (err) {
@@ -14,8 +18,8 @@ function done(err, results) {
 }
 
 function send(message, cb) {
-  var err = Math.random() > 0.8 ? new Error("whaaa") : null;
-  var value = ++index;
+  var err = Math.random() > 0.95 ? new Error("whaaa") : null;
+  var value = ++ index;
   setTimeout(cb, randomTimeout(), err, value);
 }
 

@@ -5,7 +5,7 @@ function eachAsyncSeries(collection, func, cb) {
   next();
 
   function next() {
-    if (! pending.lenght) {
+    if (! pending.length) {
       cb();
     } else {
       func(pending.shift(), iterated)

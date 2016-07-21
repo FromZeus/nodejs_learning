@@ -1,12 +1,12 @@
-module.exports = eachAsyncSeries;
+module.exports = mapAsyncSeries;
 
-function eachAsyncSeries(collection, map, cb) {
+function mapAsyncSeries(collection, map, cb) {
   var pending = collection.slice();
   var results = [];
   next();
 
   function next() {
-    if (! pending.lenght) {
+    if (! pending.length) {
       cb(null, results);
     } else {
       map(pending.shift(), mapped)
