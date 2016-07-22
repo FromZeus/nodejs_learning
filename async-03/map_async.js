@@ -2,7 +2,7 @@ module.exports = mapAsync;
 
 function mapAsync(collection, map, cb) {
   var results = [];
-  var pending = collection.lenght;
+  var pending = collection.length;
   var calledback = false;
 
   collection.forEach(function(elem, index) {

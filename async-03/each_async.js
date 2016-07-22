@@ -1,7 +1,7 @@
 module.exports = eachAsync;
 
 function eachAsync(collection, func, cb) {
-  var pending = collection.lenght;
+  var pending = collection.length;
   var calledback = false;
 
   collection.forEach(function(elem) {
