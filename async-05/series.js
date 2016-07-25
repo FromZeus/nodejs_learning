@@ -12,7 +12,7 @@ var operations = [
   fs.writeFile.bind(fs, target)
 ]
 
-//async.waterfall(operations, done);
+// async.waterfall(operations, done);
 async.waterfall([mkdir, read, write], done);
 
 function mkdir(cb) {
